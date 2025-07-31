@@ -40,41 +40,30 @@
       color: #555;
     }
   </style>
-  <!-- Add inside <head> -->
-<script type="module">
-  // Firebase Config (replace this with yours)
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyDuJDGWDlx0mMGysyGrfFdnn83PyreJHCg",
+    authDomain: "getloans-7fca6.firebaseapp.com",
+    projectId: "getloans-7fca6",
+    storageBucket: "getloans-7fca6.firebasestorage.app",
+    messagingSenderId: "943078520945",
+    appId: "1:943078520945:web:ff8dfc38919500a3cb03d0",
+    measurementId: "G-1H15Z3B3QG"
   };
 
+  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  window.submitToFirebase = async function(name, number, loanType, whatsappURL) {
-    try {
-      await addDoc(collection(db, "loanEnquiries"), {
-        name,
-        number,
-        loanType,
-        timestamp: new Date()
-      });
-
-      // On success, redirect to WhatsApp
-      window.open(whatsappURL, "_blank");
-    } catch (e) {
-      alert("Error storing data in Firebase: " + e.message);
-    }
-  }
+  const analytics = getAnalytics(app);
 </script>
-
+</script>
 </head>
 <body>
 
